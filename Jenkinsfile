@@ -21,7 +21,7 @@ pipeline {
 
         stage('Login to Azure') {
             steps {
-                sh '''
+                bat '''
                 az login --service-principal \
                   --username $AZURE_CLIENT_ID \
                   --password $AZURE_CLIENT_SECRET \
@@ -33,7 +33,7 @@ pipeline {
 
         stage('Deploy Bicep Template') {
             steps {
-                sh '''
+                bat '''
                 az deployment group create \
                   --resource-group $RESOURCE_GROUP \
                   --template-file $TEMPLATE_FILE \
